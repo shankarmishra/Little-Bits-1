@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital Registration Form</title>
-    <link rel="stylesheet" href="../stylesheets/registered.css">
+    <link rel="stylesheet" href="/stylesheets/registered.css"> <!-- Adjusted path -->
 </head>
 <body>
-    
     <div class="form-container">
         <h2>Hospital Registration</h2>
-        <form action="/hospitals/register" method="POST">
+        <form action="/hospitals/register" method="POST" enctype="multipart/form-data"> <!-- Added enctype for file uploads -->
             <!-- Hospital Name -->
-            <label for="hospital-name">Hospital Name:</label>
+            <label for="hospitalname">Hospital Name:</label>
             <input type="text" id="hospitalname" name="hospitalname" placeholder="Enter hospital name" required>
 
             <!-- Email -->
@@ -21,7 +20,7 @@
 
             <!-- Phone Number -->
             <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+            <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required pattern="^\+?[0-9]{10,15}$" title="Please enter a valid phone number.">
 
             <!-- Address -->
             <label for="address">Address:</label>
@@ -29,20 +28,18 @@
 
             <!-- Hospital Verification Document -->
             <label for="verification">Hospital Verification Document:</label>
-            <input type="file" id="verification" name="verification" required>
+            <input type="file" id="verification" name="verification" accept=".pdf,.jpg,.jpeg,.png" required> <!-- Added accept attribute -->
 
             <!-- Create Password -->
             <label for="password">Create Password:</label>
             <input type="password" id="password" name="password" placeholder="Create password" required>
 
             <!-- Register Button -->
-            <button type="submit" class="register-btn" >Register</button>
+            <button type="submit" class="register-btn">Register</button>
         </form>
-       
 
         <!-- Login Option -->
-        <p>Already registered? <a href="/logins">Login here</a></p>
+        <p>Already registered? <a href="/login">Login here</a></p> <!-- Fixed link -->
     </div>
 </body>
 </html>
-
