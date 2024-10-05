@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor & Hospital Portal</title>
+    <link rel="stylesheet" href="../stylesheets/docters-form.css">
+</head>
+<body>
+    
+    <header>
+        <div class="logo">
+           <img src="../images/logo.png" alt="">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/doctor">DOCTORS</a></li>
+                <li><a href="/bloodbank">BLOOD BANK</a></li>
+                <li><a href='/inventory'>INVENTORY DETAILS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-text" data-aos="fade-up">
+            <h2>Connecting You to the Best Healthcare</h2>
+            <p>Find Doctors, Hospitals, and Medical Resources in One Place</p>
+        </div>
+    </section>
+    <h2 class="form-title">Add Doctor Details :</h2>
+    <div class="form-container">
+      
+        <form action="/submit-doctor-details" method="POST" class="doctor-form">
+
+          <label for="name">Doctor's Name:</label>
+          <input type="text" id="name" name="name" placeholder="Enter doctor's name" required class="input-field">
+    
+          <label for="qualification">Qualification:</label>
+          <input type="text" id="qualification" name="qualification" placeholder="Enter qualification" required class="input-field">
+    
+          <label for="experience">Years of Experience:</label>
+          <input type="number" id="experience" name="experience" min="0" placeholder="Enter years of experience" required class="input-field">
+    
+          <label for="specialization">Select Specialization:</label>
+          <select id="specialization" name="specialization" required>
+            <option value="" disabled selected>Select a specialization</option>
+            <option value="Cardiologist">Cardiologist</option>
+            <option value="Neurologist">Neurologist</option>
+            <option value="Orthopedic Surgeon">Orthopedic Surgeon</option>
+            <option value="Dermatologist">Dermatologist</option>
+            <option value="Oncologist">Oncologist</option>
+            <option value="Pediatrician">Pediatrician</option>
+            <option value="Gastroenterologist">Gastroenterologist</option>
+            <option value="Pulmonologist">Pulmonologist</option>
+            <option value="Endocrinologist">Endocrinologist</option>
+            <option value="Nephrologist">Nephrologist</option>
+            <option value="Ophthalmologist">Ophthalmologist</option>
+            <option value="Psychiatrist">Psychiatrist</option>
+            <option value="Gynecologist">Gynecologist</option>
+            <option value="Urologist">Urologist</option>
+            <option value="Rheumatologist">Rheumatologist</option>
+            <option value="Hematologist">Hematologist</option>
+            <option value="ENT Specialist">ENT Specialist</option>
+            <option value="General Surgeon">General Surgeon</option>
+            <option value="Plastic Surgeon">Plastic Surgeon</option>
+            <option value="Radiologist">Radiologist</option>
+          </select>
+    
+          <label for="availability">Availability Days:</label>
+          <input type="text" id="availability" name="availability" placeholder="Enter availability days" required class="input-field">
+          <button type="submit" class="submit-button">ADD</button>
+         
+        </form>
+      </div>
+     
+
+    
+    <footer id="contact" class="section" data-aos="fade-up">
+        <h2>Contact Us</h2>
+        <p>Email:xxxxx@gmail.com</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+  </script>
+</body>
+</html>

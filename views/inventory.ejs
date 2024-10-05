@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMC.gov</title>
+    <link rel="stylesheet" href="../stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script defer src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<!-- <style> 
+.body { font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container {
+    background-color: white;
+    margin-left: 40%;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+</style></style> -->
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <img src="../images/logo.png" alt="Logo">
+         </div>
+         <ul>
+            <li><a href="/doctor">DOCTORS</a></li>
+            <li><a href="/bloodbank">BLOOD BANK</a></li>
+            <li><a href='/inventory'>INVENTORY DETAILS</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Health, Our Priority</h1>
+            <p>We provide world-class medical services to ensure you stay healthy and happy.</p>
+            
+        </div>
+    </section>
+
+    <div class="form-container">
+        <h2>Add Inventory Item</h2>
+        <form action="/add-inventory" method="POST">
+            <label for="itemName">Item Name:</label>
+            <input type="text" id="itemName" name="itemName" required>
+
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="medicine">Medicine</option>
+                <option value="equipment">Equipment</option>
+                <option value="supplies">Supplies</option>
+            </select>
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" required>
+
+
+            <label for="notes">Additional Notes:</label>
+            <textarea id="notes" name="notes" rows="4"></textarea>
+
+            <button type="submit">Add Item</button>
+        </form>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 SmartCare. All rights reserved.</p>
+    </footer>
+
+    <script>
+       /* app.get('/hospital', (req, res) => {
+            res.render('hospital');  // This renders the 'hospital.ejs' file
+        });*/
+    </script>
+</body>
+</html>

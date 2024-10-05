@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blood Units Form</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+    }
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #0073e6;
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+header .logo img {
+    height: 130px;
+    margin: -40px;
+   padding-left: 40px;
+   padding-bottom: -30px;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+#hero {
+    background: linear-gradient(rgba(0, 115, 230, 0.7), rgba(0, 115, 230, 0.7)), url('https://example.com/hero-image.jpg');
+  
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+#hero h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+#hero p {
+    font-size: 1.2rem;
+}
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    /* Responsive adjustments */
+    @media(max-width: 768px) {
+      form {
+        grid-template-columns: 1fr;
+      }
+    }
+.button{
+    height: 40px;
+    width: 200%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+  
+}
+
+button{
+    height: 42px;
+    width: 123px;
+    margin: 10px;
+    border: none;
+    border: 2px solid #0073e6;
+    font-size: 1.2rem;
+    font-weight: 300;
+    border-radius: 20px;
+}
+button:hover{
+  background-color: #0073e6;
+  color: white;
+  font-weight: 500;
+}
+
+    footer {
+    background-color: #0073e6;
+    color: #fff;
+    text-align: center;
+    padding: 20px 20px;
+    position:relative;
+    bottom: 0px;
+    width: 100%;
+    margin-top: 10vh;
+}
+
+footer p {
+    margin: 10px 0;
+}
+@media (max-width:770px) {
+  .button{
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+   
+}
+}
+  </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+           <img src="/images/logo2.png" alt="">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/doctor">DOCTORS</a></li>
+                <li><a href="/bloodbank">BLOOD BANK</a></li>
+                <li><a href='/inventory'>INVENTORY DETAILS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-text" data-aos="fade-up">
+            <h2>Connecting You to the Best Healthcare</h2>
+            <p>Find Doctors, Hospitals, and Medical Resources in One Place</p>
+        </div></section>
+    
+
+  <div class="container">
+    <h1>Hospital Blood Units</h1>
+    <form>
+      <div class="form-group">
+        <label for="a-positive">A+ Blood Units</label>
+        <input type="number" id="a-positive" placeholder="Enter A+ Units">
+      </div>
+
+      <div class="form-group">
+        <label for="a-negative">A- Blood Units</label>
+        <input type="number" id="a-negative" placeholder="Enter A- Units">
+      </div>
+
+      <div class="form-group">
+        <label for="b-positive">B+ Blood Units</label>
+        <input type="number" id="b-positive" placeholder="Enter B+ Units">
+      </div>
+
+      <div class="form-group">
+        <label for="b-negative">B- Blood Units</label>
+        <input type="number" id="b-negative" placeholder="Enter B- Units">
+      </div>
+
+      <div class="form-group">
+        <label for="o-positive">O+ Blood Units</label>
+        <input type="number" id="o-positive" placeholder="Enter O+ Units">
+      </div>
+
+      <div class="form-group">
+        <label for="o-negative">O- Blood Units</label>
+        <input type="number" id="o-negative" placeholder="Enter O- Units">
+      </div>
+
+      <div class="form-group">
+        <label for="ab-positive">AB+ Blood Units</label>
+        <input type="number" id="ab-positive" placeholder="Enter AB+ Units">
+      </div>
+
+      <div class="form-group">
+        <label for="ab-negative">AB- Blood Units</label>
+        <input type="number" id="ab-negative" placeholder="Enter AB- Units">
+      </div>
+      <div class="button">
+        <button type="submit">Reset</button>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+ 
+  <footer id="contact" class="section" data-aos="fade-up">
+    <h2>Contact Us</h2>
+    <p>Email:xxxxx@gmail.com</p>
+</footer>
+</body>
+</html>

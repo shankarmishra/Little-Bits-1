@@ -17,9 +17,8 @@ const hospitalSchema = new mongoose.Schema({
         match: /^\+?[0-9]{10,15}$/ // Basic phone number validation
     },
     address: {
-        type:String,
+        type: String,
         required: true
-
     },
     verificationDocument: {
         type: String, // Path to the verification document
@@ -36,6 +35,10 @@ const hospitalSchema = new mongoose.Schema({
     updatedAt: {
         type: Date,
         default: Date.now // Sets the date when the record is updated
+    },
+    hospitalDetails: { // Corrected spelling for clarity
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'HospitalDetails' // Ensure this matches your details model name
     }
 });
 
@@ -46,6 +49,6 @@ hospitalSchema.pre('save', function(next) {
 });
 
 // Create the model
-const Hospital = mongoose.model('hospitals', hospitalSchema);
+const Hospital = mongoose.model('Hospital', hospitalSchema); // Consistent naming convention
 
 module.exports = Hospital;

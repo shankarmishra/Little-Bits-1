@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor & Hospital Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../stylesheets/details.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+           <img src="../images/logo.png" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/doctor">DOCTORS</a></li>
+                <li><a href="/bloodbank">BLOOD BANK</a></li>
+                <li><a href='/inventory'>INVENTORY DETAILS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-text" data-aos="fade-up">
+            <h2>Connecting You to the Best Healthcare</h2>
+            <p>Find Doctors, Hospitals, and Medical Resources in One Place</p>
+        </div>
+    </section>
+
+    <section id="hospital-form" class="section" data-aos="fade-right">
+        <h2>Enter Hospital Details :</h2> 
+        <form id="hospitalDetailsForm" action="/hospitals/hospital-details" method="post">
+            <label for="bedsAvailable">Number of beds:</label>
+            <input type="number" id="bedsAvailable" name="bedsAvailable" value="<%= bedsAvailable %>" required min="0" disabled>
+          
+            <label for="bedsBooked">Number of beds booked:</label>
+            <input type="number" id="bedsBooked" name="bedsBooked" value="<%= bedsBooked %>" required min="0" disabled>
+          
+            <label for="nurses">Number of nurses:</label>
+            <input type="number" id="nurses" name="nurses" value="<%= nurses %>" required min="0" disabled>
+          
+            <label for="labs">Number of labs:</label>
+            <input type="number" id="labs" name="labs" value="<%= labs %>" required min="0" disabled>
+          
+            <label for="icuBeds">Number of ICU beds:</label>
+            <input type="number" id="icuBeds" name="icuBeds" value="<%= icuBeds %>" required min="0" disabled>
+          
+            <label for="icuBedsBooked">Number of ICU beds booked:</label>
+            <input type="number" id="icuBedsBooked" name="icuBedsBooked" value="<%= icuBedsBooked %>" required min="0" disabled>
+          
+            <label for="ventilators">Number of ventilators:</label>
+            <input type="number" id="ventilators" name="ventilators" value="<%= ventilators %>" required min="0" disabled>
+          
+            <label for="oxygenUnits">Number of oxygen units:</label>
+            <input type="number" id="oxygenUnits" name="oxygenUnits" value="<%= oxygenUnits %>" required min="0" disabled>
+          
+            <label for="ambulances">Number of ambulances:</label>
+            <input type="number" id="ambulances" name="ambulances" value="<%= ambulances %>" required min="0" disabled>
+          
+            <label for="operatingRooms">Number of operating rooms:</label>
+            <input type="number" id="operatingRooms" name="operatingRooms" value="<%= operatingRooms %>" required min="0" disabled>
+          
+            <label for="emergencyRooms">Number of emergency rooms:</label>
+            <input type="number" id="emergencyRooms" name="emergencyRooms" value="<%= emergencyRooms %>" required min="0" disabled>
+          
+            <label for="pharmacies">Number of pharmacies:</label>
+            <input type="number" id="pharmacies" name="pharmacies" value="<%= pharmacies %>" required min="0" disabled>
+          
+            <button type="button" id="editButton">Edit</button>
+            <button type="submit" id="submitButton" disabled>Update</button>
+        </form>
+    </section>
+
+    <footer id="contact" class="section" data-aos="fade-up">
+        <h2>Contact Us</h2>
+        <p>Email: xxxxx@gmail.com</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initially disable all inputs and set the submit button to disabled
+            const inputs = document.querySelectorAll('#hospitalDetailsForm input');
+            inputs.forEach(input => {
+                input.disabled = true;  // Disable input fields on page load
+            });
+
+            // Add event listener for the Edit button
+            document.getElementById('editButton').addEventListener('click', function() {
+                inputs.forEach(input => {
+                    input.disabled = false;  // Enable input fields when Edit is clicked
+                    input.style.backgroundColor = '#f0f8ff';  // Highlight editable fields
+                });
+                document.getElementById('submitButton').disabled = false;  // Enable the Update button
+                this.disabled = true;  // Disable the Edit button during edit mode
+            });
+        });
+
+        // Auto-refresh the page every 24 hours
+        setTimeout(function() {
+            location.reload();
+        }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
+    </script>
+</body>
+</html>
