@@ -20,11 +20,12 @@ nav {
   justify-content: space-between;
   align-items: center;
 }
+
 nav .logo img {
   height: 130px;
   margin: -40px;
- padding-left: 40px;
- padding-bottom: -30px;
+  padding-left: 40px;
+  padding-bottom: -30px;
 }
 
 nav .nav-links {
@@ -159,21 +160,32 @@ button:hover {
 /* Media Queries */
 @media (max-width: 768px) {
   nav .nav-links li {
-      display: block;
-      margin: 10px 0;
+    display: block;
+    margin: 10px 0;
   }
 
   #hospitalDetailsForm {
-      grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 480px) {
   nav {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   #hospitalDetailsForm {
-      grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
+}
+
+/* Error Message Styling */
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
 }

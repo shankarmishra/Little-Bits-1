@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('smartcare:server');
 var http = require('http');
+var fs = require('fs');
 
 /**
  * Get port from environment and store in Express.
@@ -87,4 +88,29 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
+}
+
+// Global error handler
+process.on('uncaughtException', (error) => {
+  console.error('Uncaught Exception:', error);
+  // Perform any necessary cleanup
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+  // Perform any necessary cleanup
+  process.exit(1);
+});
+
+// Attempt to read the private key file
+const privateKeyPath = 'C:/Users/shankar mishra/New folder/Little-Bits/path/to/private-key.pem';
+
+try {
+  const privateKey = fs.readFileSync(privateKeyPath, 'utf8');
+  console.log('Private key loaded successfully');
+  // Use the privateKey in your application...
+} catch (error) {
+  console.error('Error reading private key file:', error.message);
+  // Handle the error appropriately (e.g., exit the process or use a default configuration)
 }

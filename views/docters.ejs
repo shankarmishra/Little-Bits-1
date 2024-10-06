@@ -14,7 +14,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="/doctor">DOCTORS</a></li>
+                <li><a href="/docters">DOCTORS</a></li>
                 <li><a href="/bloodbank">BLOOD BANK</a></li>
                 <li><a href='/inventory'>INVENTORY DETAILS</a></li>
             </ul>
@@ -30,7 +30,7 @@
     <h2 class="form-title">Add Doctor Details :</h2>
     <div class="form-container">
       
-        <form action="/submit-doctor-details" method="POST" class="doctor-form">
+        <form action="/hospitals/doctor-details" method="POST" class="doctor-form">
 
           <label for="name">Doctor's Name:</label>
           <input type="text" id="name" name="name" placeholder="Enter doctor's name" required class="input-field">
@@ -83,6 +83,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         AOS.init();
-  </script>
+
+        // Add error handling for each input field
+        document.querySelectorAll('.input-field, select').forEach(function(element) {
+            element.addEventListener('invalid', function(event) {
+                event.preventDefault();
+                if (!event.target.validity.valid) {
+                    event.target.classList.add('error');
+                    let errorMessage = event.target.validationMessage;
+                    let errorElement = document.createElement('span');
+                    errorElement.className = 'error-message';
+                    errorElement.textContent = errorMessage;
+                    event.target.parentNode.appendChild(errorElement);
+                }
+            });
+
+            element.addEventListener('input', function(event) {
+                event.target.classList.remove('error');
+                let errorElement = event.target.parentNode.querySelector('.error-message');
+                if (errorElement) {
+                    errorElement.remove();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

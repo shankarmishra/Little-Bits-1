@@ -8,7 +8,7 @@ function userauth(req, res, next) {
 
     // If there is no token, return an error
     if (!token) {
-        return res.status(401).send('Access denied. No token provided.');
+        return res.status(401).json({ error: 'Access denied. No token provided.' });
     }
 
     try {
@@ -17,7 +17,8 @@ function userauth(req, res, next) {
         req.user = decoded; // Attach user data to the request object
         next(); // Proceed to the next middleware or route handler
     } catch (error) {
-        res.status(400).send('Invalid token');
+        console.error('Token verification error:', error);
+        return res.status(400).json({ error: 'Invalid token', details: error.message });
     }
 }
 

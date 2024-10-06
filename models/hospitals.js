@@ -3,52 +3,72 @@ const mongoose = require('mongoose');
 const hospitalSchema = new mongoose.Schema({
     hospitalName: {
         type: String,
-        required: true
+        required: [true, 'Hospital name is required']
     },
     email: {
         type: String,
-        required: true,
-        unique: true, // Ensures that email addresses are unique
-        match: /.+\@.+\..+/ // Basic email validation regex
+        required: [true, 'Email is required'],
+        unique: true,
+        match: [/.+\@.+\..+/, 'Please enter a valid email address']
     },
     contactNumber: {
         type: String,
-        required: true,
-        match: /^\+?[0-9]{10,15}$/ // Basic phone number validation
+        required: [true, 'Contact number is required'],
+        match: [/^\+?[0-9]{10,15}$/, 'Please enter a valid contact number']
     },
     address: {
-        type: String,
-        required: true
+        street: {
+            type: String,
+            required: [true, 'Street address is required']
+        },
+        city: {
+            type: String,
+            required: [true, 'City is required']
+        },
+        state: {
+            type: String,
+            required: [true, 'State is required']
+        },
+        zipcode: {
+            type: String,
+            required: [true, 'Zip code is required']
+        }
     },
     verificationDocument: {
-        type: String, // Path to the verification document
-        required: true
+        type: String,
+        required: [true, 'Verification document is required']
     },
     password: {
         type: String,
-        required: true
+        required: [true, 'Password is required'],
+        minlength: [6, 'Password must be at least 6 characters long']
     },
     createdAt: {
         type: Date,
-        default: Date.now // Sets the date when the record is created
+        default: Date.now
     },
     updatedAt: {
         type: Date,
-        default: Date.now // Sets the date when the record is updated
+        default: Date.now
     },
-    hospitalDetails: { // Corrected spelling for clarity
+    hospitalDetails: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'HospitalDetails' // Ensure this matches your details model name
+        ref: 'HospitalDetails'
     }
 });
 
-// Middleware to update the updatedAt field on every save
 hospitalSchema.pre('save', function(next) {
     this.updatedAt = Date.now();
     next();
 });
 
-// Create the model
-const Hospital = mongoose.model('Hospital', hospitalSchema); // Consistent naming convention
+hospitalSchema.pre('save', function(next) {
+    if (this.isModified('password')) {
+        // Add password hashing logic here if not handled elsewhere
+    }
+    next();
+});
+
+const Hospital = mongoose.model('Hospital', hospitalSchema);
 
 module.exports = Hospital;

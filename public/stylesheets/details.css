@@ -18,14 +18,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 header .logo img {
     height: 130px;
     margin: -40px;
-   padding-left: 40px;
-   padding-bottom: -30px;
+    padding-left: 40px;
+    padding-bottom: -30px;
 }
 
 nav ul {
@@ -69,7 +68,7 @@ form {
     display: flex;
     flex-direction: column;
     gap: 15px;
- padding-top: 40px;
+    padding-top: 40px;
     margin: 0 auto;
 }
 
@@ -79,20 +78,18 @@ form input, form button {
     border: 1px solid #ddd;
 }
 
-button{
+button {
     border: 2px solid #0073e6;
     width: 50%;
 }
 
-#hospitalDetailsForm{
+#hospitalDetailsForm {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
-    grid-template-rows: repeat(2,1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 10px;
     width: 80%;
-    
 }
-
 
 footer {
     background-color: #0073e6;

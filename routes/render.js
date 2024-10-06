@@ -1,39 +1,35 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const userauth = require('../middleware/userauth');
-
+const Hospital = require('../models/hospitals');
 
 router.get('/', (req, res) => {
-    res.render('../views/index.ejs')
-})
-// router.get('/error', function(req, res) {
-//     res.render('error'); // Just specify the view name, no need for ../views
-// });
-router.get('/icon', function(req, res) {
-    res.render('registered'); // Just specify the view name, no need for ../views
+    res.render('index');
 });
 
-router.get('/listofhospital', function(req, res) {
-    res.render('list-hospital'); // Just specify the view name, no need for ../views
+router.get('/icon', (req, res) => {
+    res.render('registered');
+});
+
+router.get('/listofhospitals', userauth, async(req, res) => {
+    const hospitals = await Hospital.find().select('hospitalName email contactNumber address');
+    res.render('listhospital',{hospitals});
 });
 
 
-
-// Route to render the registration page
-router.get('/registered', function(req, res) {
-    res.render('registered'); // Just specify the view name, no need for ../views
+router.get('/register', (req, res) => {
+    res.render('registered');
 });
 
-// Route to render the login page
-router.get('/login', function(req, res) {
-    res.render('login'); // Just specify the view name, no need for ../views
+router.get('/login', (req, res) => {
+    res.render('login', { error: null });
 });
 
-router.get('/index2' , userauth, (req, res) => {
-    res.render('index2'); // Just specify the view name, no need for ../views
+router.get('/index2', userauth, (req, res) => {
+    res.render('index2');
 });
+
 router.get('/details', userauth, (req, res) => {
-    // Assuming you fetch this data from your database or another source
     const hospitalData = {
         bedsAvailable: 0,
         bedsBooked: 0,
@@ -49,23 +45,23 @@ router.get('/details', userauth, (req, res) => {
         pharmacies: 0
     };
 
-    // Render the details view and pass the hospital data
     res.render('details', hospitalData);
 });
 
-router.get('/doctor', userauth, (req, res) => {
-    res.render('docters'); // Just specify the view name, no need for ../views
-});
-router.get('/inventory',userauth, function(req, res) {
-    res.render('inventory'); // Just specify the view name, no need for ../views
-});
-router.get('/bloodbank', userauth,function(req, res) {
-    res.render('bloodbank'); // Just specify the view name, no need for ../views
+router.get('/docters', userauth, (req, res) => {
+    res.render('docters');
 });
 
-router.get('/successful', userauth, (req, res) =>  {
-    res.render('successful'); // Just specify the view name, no need for ../views
+router.get('/inventory', userauth, (req, res) => {
+    res.render('inventory');
 });
 
+router.get('/bloodbank', userauth, (req, res) => {
+    res.render('bloodbank');
+});
+
+router.get('/successful', userauth, (req, res) => {
+    res.render('successful');
+});
 
 module.exports = router;

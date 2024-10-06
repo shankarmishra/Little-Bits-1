@@ -1,5 +1,4 @@
-
-        * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -18,14 +17,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 header .logo img {
     height: 130px;
     margin: -40px;
-   padding-left: 40px;
-   padding-bottom: -30px;
+    padding-left: 40px;
+    padding-bottom: -30px;
 }
 
 nav ul {
@@ -45,7 +43,6 @@ nav ul li a {
 
 #hero {
     background: linear-gradient(rgba(0, 115, 230, 0.7), rgba(0, 115, 230, 0.7)), url('https://example.com/hero-image.jpg');
-  
     color: #fff;
     text-align: center;
     padding: 100px 20px;
@@ -59,14 +56,16 @@ nav ul li a {
 #hero p {
     font-size: 1.2rem;
 }
-.form-container{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   width: 50%;
-   margin-left:30% ;
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
 }
-.form-title{
+
+.form-title {
     padding-top: 10px;
     padding-left: 10px;
 }
@@ -76,10 +75,9 @@ form {
     flex-direction: column;
     gap: 10px;
     width: 100%;
-   padding-top: 10px;
- justify-content: center;
- align-items: left;
-
+    padding-top: 10px;
+    justify-content: center;
+    align-items: left;
 }
 
 form input {
@@ -88,7 +86,8 @@ form input {
     width: 100%;
     border: 1px solid black;
 }
-#specialization{
+
+#specialization {
     padding: 10px;
     border-radius: 5px;
     width: 100%;
@@ -96,47 +95,55 @@ form input {
     height: 40px;
 }
 
-.submit-button{
+.submit-button {
     border: 2px solid #0073e6;
- height: 40px;
- width: 140px;
+    height: 40px;
+    width: 140px;
     display: flex;
-   align-items: center;
+    align-items: center;
     justify-content: center;
     margin-bottom: 20px;
-border-radius: 10px;
-margin-top: 10px;
-}
-button:hover{
-    background-color: #0073e6;
-    text-align: center;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-@media (max-width:580px){
+.submit-button:hover {
+    background-color: #0073e6;
+    color: white;
+}
+
+@media (max-width: 580px) {
     nav ul li a {
         font-size: 0.8rem;
     }
-    #hero h2{
+    #hero h2 {
         font-size: 2rem;
     }
-}
-@media (max-width:500px){
-    nav ul li a{
-        font-size: 0.7rem;
-       display: flex;
-   
-       margin-left: 50px;
+    .form-container {
+        width: 80%;
     }
 }
 
+@media (max-width: 500px) {
+    nav ul li a {
+        font-size: 0.7rem;
+        display: flex;
+        margin-left: 10px;
+    }
+    .form-container {
+        width: 90%;
+    }
+}
 
 footer {
     background-color: #0073e6;
     color: #fff;
     text-align: center;
-    padding: 20px 20px;
-    position:relative;
-    bottom: 0px;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
     width: 100%;
 }
 

@@ -3,16 +3,16 @@ body {
     background-image: url(../images/log.png);
     background-repeat: no-repeat;
     background-position: left;
-    background-position-x:240px ;;
-    background-position-y:180px ;
-   background-color: #007BFF;
-   background-size: 490px;
+    background-position-x: 240px;
+    background-position-y: 180px;
+    background-color: #007BFF;
+    background-size: 490px;
     margin: 0;
     padding: 0;
 }
 
 .container {
-    background-color: #3797fe(69, 125, 228);
+    background-color: rgba(69, 125, 228, 0.8);
     margin: 50px auto;
     margin-top: 9%;
     padding: 20px;
@@ -21,11 +21,11 @@ body {
     width: 550px;
     transition: transform 0.3s ease, box-shadow 0.2s ease;
 }
+
 .container:hover {
     transform: translateY(-10px) scale(1.00);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
-
 
 h1 {
     text-align: center;
@@ -76,4 +76,13 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+.error-message {
+    background-color: #ff6b6b;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    text-align: center;
 }

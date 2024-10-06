@@ -11,6 +11,12 @@ const hospitalDetailsSchema = new mongoose.Schema({
     type: Number,
     required: true,
     min: [0, 'Number of beds booked cannot be negative'],
+    validate: {
+      validator: function(value) {
+        return value <= this.bedsAvailable;
+      },
+      message: 'Number of booked beds cannot exceed available beds'
+    }
   },
   nurses: {
     type: Number,
@@ -31,6 +37,8 @@ const hospitalDetailsSchema = new mongoose.Schema({
     type: Number,
     required: true,
     min: [0, 'Number of ICU beds booked cannot be negative'],
+  
+    
   },
   ventilators: {
     type: Number,
@@ -65,13 +73,26 @@ const hospitalDetailsSchema = new mongoose.Schema({
   hospitalId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Hospital',
-    required: true, // Add this to enforce every detail belongs to a hospital
+    required: true,
   },
 });
 
+// Add a pre-save hook to check for any logical errors
+hospitalDetailsSchema.pre('save', function(next) {
+  if (this.isModified('bedsBooked') || this.isModified('bedsAvailable')) {
+    if (this.bedsBooked > this.bedsAvailable) {
+      return next(new Error('Number of booked beds cannot exceed available beds'));
+    }
+  }
+  if (this.isModified('icuBedsBooked') || this.isModified('icuBeds')) {
+    if (this.icuBedsBooked > this.icuBeds) {
+      return next(new Error('Number of booked ICU beds cannot exceed available ICU beds'));
+    }
+  }
+  next();
+});
 
 // Create the hospital details model
-const HospitalDetails = mongoose.model('HospitalDetails', hospitalDetailsSchema); // Ensure the model name is clear
+const HospitalDetails = mongoose.model('HospitalDetails', hospitalDetailsSchema);
 
 module.exports = HospitalDetails;
-

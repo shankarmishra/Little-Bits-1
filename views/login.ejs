@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Hospital Login Page">
     <title>Hospital Login</title>
-    <link rel="stylesheet" href="/stylesheets/login.css"> <!-- Adjusted path -->
+    <link rel="stylesheet" href="/stylesheets/login.css">
 </head>
 <body>
     <div class="container">
@@ -14,9 +14,6 @@
             <div class="form-section" id="login">
                 <h2>Login</h2>
                 <form action="/hospitals/login" method="post">
-                    <label for="hospitalName">Hospital Name:</label>
-                    <input type="text" id="hospitalName" name="hospitalName" required>
-
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
 
@@ -25,10 +22,16 @@
 
                     <button type="submit">Login</button>
                 </form>
-                <p>Don't have an account? <a href="/registered">Register here</a></p> <!-- Fixed link -->
+                <p>Don't have an account? <a href="/register">Register here</a></p>
             </div>
         </div>
     </div>
+    <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+        <div class="error-message">
+            <% errors.forEach(function(error) { %>
+                <p><%= error.msg %></p>
+            <% }); %>
+        </div>
+    <% } %>
 </body>
 </html>
-

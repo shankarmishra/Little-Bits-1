@@ -11,7 +11,6 @@ body {
     background-repeat: no-repeat;
     background-position: left;
     background-position-x: 384px;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,8 +18,7 @@ body {
 }
 
 .form-container {
-    background-color: #3797fe(69, 125, 228);
-  
+    background-color: rgba(69, 125, 228, 0.8);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -42,7 +40,6 @@ h2 {
 form {
     display: flex;
     flex-direction: column;
-    
 }
 
 label {
@@ -66,7 +63,7 @@ textarea {
 button {
     padding: 10px;
     background-color: #2d30eb;
-    color: #040609;
+    color: #ffffff;
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -83,7 +80,7 @@ p {
 }
 
 a {
-    color: #f3f6f9;
+    color: #000000;
     text-decoration: none;
 }
 
@@ -91,3 +88,8 @@ a:hover {
     text-decoration: underline;
 }
 
+.error-message {
+    color: #ff0000;
+    text-align: center;
+    margin-top: 10px;
+}

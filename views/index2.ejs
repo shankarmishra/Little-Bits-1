@@ -17,7 +17,7 @@
          </div>
         <ul class="nav-links">
             <li><a href="/details">Hospital</a></li>
-            <li><a href="#services">List of Hospitals</a></li>
+            <li><a href="/listofhospitals">List of Hospitals</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="/icon" id="Icon"><i class="fa-solid fa-user"></i></a></li>
         </ul>
@@ -25,11 +25,11 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <img src="" alt="Doctor" class="doctor-img">
+        <img src="../images/doctor.jpg" alt="Doctor" class="doctor-img">
         <div class="hero-content">
             <h1>Your Health, Our Priority</h1>
             <p>We provide world-class medical services to ensure you stay healthy and happy.</p>
-            <a href="main1.html"><button class="cta-button">Get Started</button></a>
+            <a href="/main1"><button class="cta-button">Get Started</button></a>
         </div>
     </section>
 
@@ -40,12 +40,24 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer id="contact">
         <p>© 2024 SmartCare. All rights reserved.</p>
+        <p>Contact us: info@smartcare.com | Phone: (123) 456-7890</p>
     </footer>
 
     <script>
-        
+        // Add any necessary JavaScript here
+        document.addEventListener('DOMContentLoaded', function() {
+            // Example: Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
     </script>
 </body>
 </html>

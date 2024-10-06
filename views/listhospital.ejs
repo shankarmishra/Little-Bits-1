@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Finder</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+    background-color: #0073e6;
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+#hero {
+    background: linear-gradient(rgba(0, 115, 230, 0.7), rgba(0, 115, 230, 0.7)), url('https://example.com/hero-image.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+#hero h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+#hero p {
+    font-size: 1.2rem;
+}
+      
+        .search-bar {
+            margin: 2px;
+            text-align: center;
+            display: flex;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 9px;
+        }
+        .search-bar button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+        }
+        .hospital-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 10px;
+        }
+        .hospital-card {
+            background-color: white;
+            border-radius: 15px;
+            width: 300px;
+            padding:5px;
+            margin: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+          
+        }
+        .hospital-card a button{
+            cursor: pointer;
+            padding-left: 10px;
+            margin-left: 10px;
+        }
+        .hospital-card h3 {
+            color: #007bff;
+        }
+        footer {
+    background-color: #0073e6;
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+}
+@media (max-width: 768px) {
+            .hospital-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+footer p {
+    margin: 10px 0;
+}
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .search-bar input {
+                width: 70%;
+                position: relative;
+              
+                left: 55px;
+             
+            }
+            .search-bar button{
+             z-index: 1;
+             width: 25%;
+             height: 30px;
+             position: relative;
+             top: .5px;
+            }
+
+            .hospital-card {
+                width: 40%;
+            }
+        }
+        header .logo img {
+               height: 130px;
+               margin: -40px;
+               padding-left: 40px;
+               padding-bottom: -30px;
+               margin-right:30px ;
+}
+.hospital-card:hover {
+            transform: scale(1.05); /* Scale the card slightly */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+        }
+        .form-section {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        select, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }    </style>
+</head>
+<body>
+ 
+    <header>
+      <div class="logo">
+       <img src="/images/logo2.png" alt="">
+    </div>
+        <h1>Find Your Nearest Hospital</h1>
+   
+ 
+  <nav>
+     
+      <div class="search-bar">
+        <input type="text" placeholder="Search hospitals by name, location, or services..." />
+        <button>Search</button>
+    </div>
+  </nav>
+</header>
+
+<section id="hero">
+  <div class="hero-text" data-aos="fade-up">
+      <h2>Connecting You to the Best Healthcare</h2>
+      <p>Find Doctors, Hospitals, and Medical Resources in One Place</p>
+  </div>
+</section>
+
+<!-- Section to Display All Registered Hospitals -->
+<!-- Section to Display All Registered Hospitals -->
+<div class="hospital-list" id="hospital-list">
+    <% if (typeof hospitals !== 'undefined' && hospitals.length > 0) { %>
+        <% hospitals.forEach(function(hospital) { %>
+            <div class="hospital-card">
+                <h3><%= hospital.hospitalName %></h3>
+                <p>Email: <%= hospital.email %></p>
+                <p>Contact: <%= hospital.contactNumber %></p>
+                <p>Address: <%= hospital.address.street %>, <%= hospital.address.city %>, <%= hospital.address.state %> <%= hospital.address.zipcode %></p>
+                <a href="/hospitals/<%= hospital._id %>"><button>View Details</button></a>
+                <a href="/book-appointment/<%= hospital._id %>"><button>Book Appointment</button></a>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>No hospitals found in the database. Please check back later.</p>
+    <% } %>
+</div>
+
+
+<footer id="contact" class="section" data-aos="fade-up">
+  <h2>Contact Us</h2>
+  <p>Email: info@hospitalportal.com</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.querySelector('.search-bar input');
+        const searchButton = document.querySelector('.search-bar button');
+        const hospitalList = document.getElementById('hospital-list');
+
+        searchButton.addEventListener('click', performSearch);
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        function performSearch() {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            const hospitalCards = hospitalList.querySelectorAll('.hospital-card');
+
+            hospitalCards.forEach(card => {
+                const hospitalName = card.querySelector('h3').textContent.toLowerCase();
+                const hospitalLocation = card.querySelector('p:nth-child(4)').textContent.toLowerCase();
+                const hospitalEmail = card.querySelector('p:nth-child(2)').textContent.toLowerCase();
+                const hospitalContact = card.querySelector('p:nth-child(3)').textContent.toLowerCase();
+
+                if (hospitalName.includes(searchTerm) || hospitalLocation.includes(searchTerm) || 
+                    hospitalEmail.includes(searchTerm) || hospitalContact.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            const visibleCards = hospitalList.querySelectorAll('.hospital-card[style="display: block;"]');
+            if (visibleCards.length === 0) {
+                const noResultsMessage = document.createElement('p');
+                noResultsMessage.textContent = 'No hospitals found matching your search. Please try again.';
+                hospitalList.appendChild(noResultsMessage);
+            } else {
+                const existingNoResultsMessage = hospitalList.querySelector('p:last-child');
+                if (existingNoResultsMessage && existingNoResultsMessage.textContent.includes('No hospitals found')) {
+                    existingNoResultsMessage.remove();
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -12,9 +12,12 @@ const usersRouter = require('./routes/users');
 const app = express();
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/smartcare')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/smartcare', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
     .then(() => console.log('MongoDB connected'))
-    .catch(err => console.log(err));
+    .catch(err => console.error('MongoDB connection error:', err));
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -37,10 +40,29 @@ app.use(function(req, res, next) {
 
 // Error handler
 app.use(function(err, req, res, next) {
+    // Set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+    // Log the error
+    console.error(err);
+
+    // Render the error page
     res.status(err.status || 500);
     res.render('error');
+});
+
+// Handle any unhandled promise rejections
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+    // Application specific logging, throwing an error, or other logic here
+});
+
+// Handle any uncaught exceptions
+process.on('uncaughtException', (error) => {
+    console.error('Uncaught Exception:', error);
+    // Application specific logging, cleanup, exit the process etc.
+    process.exit(1);
 });
 
 module.exports = app;
